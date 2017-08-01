@@ -5,7 +5,6 @@
 
 - spring-boot-starter-web: 1.5
 - Spring: 4.X
-- Kotlin: 1.1.X
 - Gradle: 4.X
 
 ## dev run
@@ -32,7 +31,7 @@ it can work with spring-boot-dev-tools at bootRun(not in executable jar)
 
 ```
 ./gradlew build
-java -jar ./build/libs/hello-webflux.jar
+java -jar ./build/libs/spring-boot-sample.jar
 ```
 
 ## Licence
