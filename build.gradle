@@ -1,0 +1,38 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.6.RELEASE'
+	}
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+	baseName = 'spring-boot-sample'
+	version =  '0.1.0'
+}
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+	testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+}
+
+bootRun {
+	systemProperties = System.properties
+	dependencies {
+		compile "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
+	}
+}
