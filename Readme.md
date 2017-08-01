@@ -31,7 +31,7 @@ it can work with spring-boot-dev-tools at bootRun(not in executable jar)
 
 ```
 ./gradlew build
-java -jar ./build/libs/spring-boot-sample.jar
+java -jar ./build/libs/spring-boot-sample-0.1.0.jar
 ```
 
 ## Licence
