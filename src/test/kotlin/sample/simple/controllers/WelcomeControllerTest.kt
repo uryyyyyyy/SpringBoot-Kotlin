@@ -1,11 +1,10 @@
-package sample.simple
+package sample.simple.controllers
 
 import org.hamcrest.Matchers.containsString
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.BDDMockito.anyString
 import org.mockito.BDDMockito.given
-import org.mockito.Matchers
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
@@ -14,6 +13,8 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import sample.simple.controllers.WelcomeController
+import sample.simple.services.WelcomeService
 
 
 @RunWith(SpringRunner::class)

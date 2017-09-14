@@ -1,9 +1,10 @@
-package sample.simple
+package sample.simple.daos
 
+import org.springframework.context.annotation.Configuration
 import org.springframework.stereotype.Service
 
-@Service
-open class WelcomeService {
+@Configuration
+open class WelcomeDao {
 
   open fun sayHello(name: String): String {
     return "Hello, ${name}!"
