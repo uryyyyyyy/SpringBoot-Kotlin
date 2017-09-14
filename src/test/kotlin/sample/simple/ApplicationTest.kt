@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner
 class ApplicationTest {
 
     @Autowired
-    internal var ctx: ApplicationContext? = null
+    private var ctx: ApplicationContext? = null
 
     @Test
     @Throws(Exception::class)

@@ -1,24 +1,20 @@
 package sample.simple.services
 
 import org.junit.Assert.assertEquals
-
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.junit4.SpringRunner
-import sample.simple.services.WelcomeService
+import org.mockito.Mockito.*
+import sample.simple.daos.WelcomeDao
 
-@RunWith(SpringRunner::class)
-@SpringBootTest
 class WelcomeServiceTest {
 
-  @Autowired
-  internal var welcomeService: WelcomeService? = null
-
   @Test
-  fun testSayHello() {
-    assertEquals("Hello, World!", welcomeService!!.sayHello("World"))
+  fun sayHelloTest() {
+    val welcomeDao = mock(WelcomeDao::class.java)
+    `when`(welcomeDao.insert(anyString())).thenReturn(-1)
+    `when`(welcomeDao.selectAllName()).thenReturn(listOf("a"))
+
+    val service = WelcomeService(welcomeDao)
+    assertEquals("Hello, World!", service.sayHello("World"))
   }
 
 }

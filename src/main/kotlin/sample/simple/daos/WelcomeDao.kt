@@ -1,12 +1,35 @@
 package sample.simple.daos
 
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
-import org.springframework.stereotype.Service
+import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.jdbc.core.PreparedStatementCreatorFactory
+import org.springframework.jdbc.support.GeneratedKeyHolder
+import java.sql.Timestamp
+import java.sql.Types
+import java.time.LocalDateTime
+import java.sql.Types.VARCHAR
+
+
+
 
 @Configuration
-open class WelcomeDao {
+open class WelcomeDao @Autowired constructor(private val jdbcTemplate: JdbcTemplate){
 
-  open fun sayHello(name: String): String {
-    return "Hello, ${name}!"
+  open fun insert(name: String): Int {
+    val sql = "insert into sample(name, created_at) values(?, ?)"
+
+    val fac = PreparedStatementCreatorFactory(sql, Types.VARCHAR, Types.TIMESTAMP)
+    fac.setReturnGeneratedKeys(true)
+    fac.setGeneratedKeysColumnNames("id")
+    val pa = fac.newPreparedStatementCreator(listOf(name, Timestamp.valueOf(LocalDateTime.now())))
+    val keyHolder = GeneratedKeyHolder()
+    jdbcTemplate.update(pa, keyHolder)
+    return keyHolder.key.toInt()
+  }
+
+  open fun selectAllName(): List<String> {
+    val list = jdbcTemplate.queryForList("SELECT * FROM sample")
+    return list.map { v -> v.get("name").toString() }
   }
 }
