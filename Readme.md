@@ -7,6 +7,18 @@
 - Spring: 4.X
 - Gradle: 4.X
 
+## setup
+
+set up database.
+
+```
+cd flyway
+## execute command/initialize.sql to your DB
+
+./commands/flyway.sh migrate
+./commands/flyway-test.sh migrate
+```
+
 ## dev run
 
 ```
@@ -38,7 +50,7 @@ check `./build/distributions/SpringBoot-Kotlin.zip`
 ## deploy & run
 
 ```
-unzip ./build/distributions/SpringBoot-Kotlin.zip
+unzip ./build/distributions/SpringBoot-Kotlin.zip -d ./build/distributions/
 ./build/distributions/SpringBoot-Kotlin/bin/SpringBoot-Kotlin
 ```
 
