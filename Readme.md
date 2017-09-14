@@ -1,9 +1,9 @@
 
-# Spring-boot-webflux & kotlin
+# Spring-boot & kotlin
 
 ## about
 
-- spring-boot-starter-web: 1.5
+- spring-boot: 1.5
 - Spring: 4.X
 - Gradle: 4.X
 
@@ -27,11 +27,19 @@ it can work with spring-boot-dev-tools at bootRun(not in executable jar)
 ./gradlew test
 ```
 
-## build & deploy
+## build & run
 
 ```
-./gradlew build
-java -jar ./build/libs/spring-boot-sample-0.1.0.jar
+./gradlew distZip
+```
+
+check `./build/distributions/SpringBoot-Kotlin.zip`
+
+## deploy & run
+
+```
+unzip ./build/distributions/SpringBoot-Kotlin.zip
+./build/distributions/SpringBoot-Kotlin/bin/SpringBoot-Kotlin
 ```
 
 ## Licence
