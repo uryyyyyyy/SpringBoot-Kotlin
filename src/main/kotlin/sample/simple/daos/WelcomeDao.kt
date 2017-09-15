@@ -2,18 +2,16 @@ package sample.simple.daos
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Profile
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.PreparedStatementCreatorFactory
 import org.springframework.jdbc.support.GeneratedKeyHolder
 import java.sql.Timestamp
 import java.sql.Types
 import java.time.LocalDateTime
-import java.sql.Types.VARCHAR
-
-
-
 
 @Configuration
+@Profile("prod")
 open class WelcomeDao @Autowired constructor(private val jdbcTemplate: JdbcTemplate){
 
   open fun insert(name: String): Int {

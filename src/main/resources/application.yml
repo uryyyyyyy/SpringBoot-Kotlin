@@ -4,3 +4,5 @@ spring:
     username: "s_k_user"
     password: "s_k_user"
     driverClassName: com.mysql.cj.jdbc.Driver
+  profiles:
+    active: prod # prod/mock
