@@ -1,6 +1,7 @@
 package sample.simple.daos
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
 import org.springframework.jdbc.core.JdbcTemplate
@@ -9,10 +10,11 @@ import org.springframework.jdbc.support.GeneratedKeyHolder
 import java.sql.Timestamp
 import java.sql.Types
 import java.time.LocalDateTime
+import javax.sql.DataSource
 
 @Configuration
 @Profile("prod")
-open class WelcomeDao @Autowired constructor(private val jdbcTemplate: JdbcTemplate){
+open class WelcomeDao @Autowired constructor(@Qualifier("sub") private val dataSource: DataSource){
 
   open fun insert(name: String): Int {
     val sql = "insert into sample(name, created_at) values(?, ?)"
@@ -22,12 +24,12 @@ open class WelcomeDao @Autowired constructor(private val jdbcTemplate: JdbcTempl
     fac.setGeneratedKeysColumnNames("id")
     val pa = fac.newPreparedStatementCreator(listOf(name, Timestamp.valueOf(LocalDateTime.now())))
     val keyHolder = GeneratedKeyHolder()
-    jdbcTemplate.update(pa, keyHolder)
+    JdbcTemplate(dataSource).update(pa, keyHolder)
     return keyHolder.key.toInt()
   }
 
   open fun selectAllName(): List<String> {
-    val list = jdbcTemplate.queryForList("SELECT * FROM sample")
+    val list = JdbcTemplate(dataSource).queryForList("SELECT * FROM sample")
     return list.map { v -> v.get("name").toString() }
   }
 }
