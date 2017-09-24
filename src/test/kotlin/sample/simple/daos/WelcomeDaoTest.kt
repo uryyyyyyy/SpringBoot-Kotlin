@@ -3,24 +3,28 @@ package sample.simple.daos
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.test.annotation.Rollback
+import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.transaction.annotation.Transactional
+import sample.simple.DataSourceConfiguration
+import javax.sql.DataSource
 
 @RunWith(SpringRunner::class)
+@ContextConfiguration(classes = arrayOf(DataSourceConfiguration::class))
 @SpringBootTest
-@Transactional
 open class WelcomeDaoTest {
 
   @Autowired
-  open val jdbcTemplate: JdbcTemplate? = null
+  @Qualifier("default")
+  open val dataSource: DataSource? = null
 
   @Test
   @Rollback
   fun selectAllTest() {
-    val welcomeDao = WelcomeDao(jdbcTemplate!!)
+    val welcomeDao = WelcomeDao(dataSource!!)
     val list = welcomeDao.selectAllName()
     list.forEach { println(it) }
   }
@@ -28,7 +32,7 @@ open class WelcomeDaoTest {
   @Test
   @Rollback
   fun insertTest() {
-    val welcomeDao = WelcomeDao(jdbcTemplate!!)
+    val welcomeDao = WelcomeDao(dataSource!!)
     val id = welcomeDao.insert("hoge")
     println(id)
     val list = welcomeDao.selectAllName()

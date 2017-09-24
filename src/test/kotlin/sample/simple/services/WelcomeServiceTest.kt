@@ -13,7 +13,7 @@ class WelcomeServiceTest {
     `when`(welcomeDao.insert(anyString())).thenReturn(-1)
     `when`(welcomeDao.selectAllName()).thenReturn(listOf("a"))
 
-    val service = WelcomeService(welcomeDao)
+    val service = WelcomeServiceImpl(welcomeDao)
     assertEquals("Hello, World!", service.sayHello("World"))
   }
 

@@ -14,7 +14,7 @@ import javax.sql.DataSource
 
 @Configuration
 @Profile("prod")
-open class WelcomeDao @Autowired constructor(@Qualifier("sub") private val dataSource: DataSource){
+open class WelcomeDao @Autowired constructor(@Qualifier("default") private val dataSource: DataSource){
 
   open fun insert(name: String): Int {
     val sql = "insert into sample(name, created_at) values(?, ?)"

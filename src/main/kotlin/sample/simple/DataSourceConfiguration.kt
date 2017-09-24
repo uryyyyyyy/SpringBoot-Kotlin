@@ -16,10 +16,4 @@ open class DataSourceConfiguration {
   open fun getDefaultDataSource(): DataSource {
     return DataSourceBuilder.create().build()
   }
-
-  @Bean(name = arrayOf("sub"))
-  @ConfigurationProperties("spring.datasource.sub")
-  open fun getSubDataSource(): DataSource {
-    return DataSourceBuilder.create().build()
-  }
 }
