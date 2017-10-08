@@ -1,3 +1,11 @@
 spring:
   profiles:
-    active: mock # prod/mock
+    active: prod # prod/mock
+
+app:
+  datasource:
+    default:
+      jdbcUrl: "jdbc:mysql://127.0.0.1:3306/s_k_sample?characterEncoding=utf8&useSSL=false"
+      username: "s_k_user"
+      password: "s_k_user"
+      driverClassName: com.mysql.cj.jdbc.Driver
