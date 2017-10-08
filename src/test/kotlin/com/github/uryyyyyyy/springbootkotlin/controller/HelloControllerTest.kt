@@ -1,4 +1,4 @@
-package com.github.uryyyyyyy.springbootkotlin
+package com.github.uryyyyyyy.springbootkotlin.controller
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -13,17 +13,23 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @RunWith(SpringRunner::class)
-@WebMvcTest(WelcomeController::class)
-class WelcomeControllerTest {
+@WebMvcTest(HelloController::class)
+class HelloControllerTest {
 
-    @Autowired
-    private val mvc: MockMvc? = null
+  @Autowired
+  private val mvc: MockMvc? = null
 
-    @Test
-    @Throws(Exception::class)
-    fun welcomeTest() {
-        mvc!!.perform(get("/"))
-                .andExpect(status().isOk)
-                .andExpect(content().string(containsString("Hello")))
-    }
+  @Test
+  fun helloTest() {
+    mvc!!.perform(get("/hello/"))
+        .andExpect(status().isOk)
+        .andExpect(content().string(containsString("Hello")))
+  }
+
+  @Test
+  fun helloTest2() {
+    mvc!!.perform(get("/hello/10"))
+        .andExpect(status().isOk)
+        .andExpect(content().string(containsString("10")))
+  }
 }

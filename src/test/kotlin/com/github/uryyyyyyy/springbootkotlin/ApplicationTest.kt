@@ -12,13 +12,13 @@ import org.springframework.test.context.junit4.SpringRunner
 @SpringBootTest
 class ApplicationTest {
 
-    @Autowired
-    private var ctx: ApplicationContext? = null
+  @Autowired
+  private var ctx: ApplicationContext? = null
 
-    @Test
-    @Throws(Exception::class)
-    fun testContextLoads() {
-        assertThat(this.ctx).isNotNull()
-        assertThat(this.ctx!!.containsBean("welcomeController")).isTrue()
-    }
+  @Test
+  @Throws(Exception::class)
+  fun testContextLoads() {
+    assertThat(this.ctx).isNotNull()
+    assertThat(this.ctx!!.containsBean("helloController")).isTrue()
+  }
 }
