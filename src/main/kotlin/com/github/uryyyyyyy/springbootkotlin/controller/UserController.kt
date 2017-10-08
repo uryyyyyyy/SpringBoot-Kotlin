@@ -9,7 +9,7 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("/user")
-open class UserController {
+class UserController {
 
   @PostMapping("/")
   fun createUser(@RequestBody @Valid dto: CreateUserDTO): UserDTO {
