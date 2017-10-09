@@ -4,7 +4,7 @@
 ## about
 
 - spring-boot-starter-web: 2.0-M4
-- Gradle: 4.
+- Gradle: 4.2
 - Kotlin: 1.1.X
 
 ## dev run
@@ -27,11 +27,14 @@ it can work with spring-boot-dev-tools at bootRun(not in executable jar)
 ./gradlew test
 ```
 
-## build & deploy
+## build & run
 
 ```
-./gradlew build
-java -jar ./build/libs/spring-boot-sample-0.1.0.jar
+./gradlew bootDistZip
+cd build/distributions
+unzip SpringBoot-Kotlin-boot-0.0.1-SNAPSHOT
+cd SpringBoot-Kotlin-boot-0.0.1-SNAPSHOT
+./bin/SpringBoot-Kotlin
 ```
 
 ## Licence
