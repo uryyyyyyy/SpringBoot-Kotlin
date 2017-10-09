@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/hello")
-open class HelloController {
+class HelloController {
 
   @GetMapping("/")
   fun hello(): String {
