@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-open class WelcomeController {
+class WelcomeController {
 
   @GetMapping("/")
   fun welcome(): String {
