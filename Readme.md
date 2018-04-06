@@ -3,7 +3,7 @@
 
 ## about
 
-- spring-boot-starter-web: 2.0-M4
+- spring-boot-starter-web: 2.0
 - Gradle: 4.
 - Kotlin: 1.1.X
 
@@ -31,7 +31,7 @@ it can work with spring-boot-dev-tools at bootRun(not in executable jar)
 
 ```
 ./gradlew build
-java -jar ./build/libs/spring-boot-sample-0.1.0.jar
+java -jar ./build/libs/SpringBoot-Kotlin-0.0.1.jar
 ```
 
 ## Licence

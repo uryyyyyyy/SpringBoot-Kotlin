@@ -1,11 +1,10 @@
 buildscript {
 	ext {
-		kotlinVersion = '1.1.51'
-		springBootVersion = '2.0.0.M4'
+		kotlinVersion = '1.2.10'
+		springBootVersion = '2.0.1.RELEASE'
 	}
 	repositories {
 		mavenCentral()
-		maven { url "https://repo.spring.io/milestone" }
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -21,7 +20,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 group = 'com.github.uryyyyyyy'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 compileKotlin {
@@ -33,7 +32,6 @@ compileTestKotlin {
 
 repositories {
 	mavenCentral()
-	maven { url "https://repo.spring.io/milestone" }
 }
 
 
